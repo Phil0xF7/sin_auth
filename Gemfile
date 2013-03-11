@@ -9,6 +9,8 @@ gem 'dm-sqlite-adapter'
 gem 'dm-validations'
 gem 'dm-timestamps'
 gem 'dm-migrations'
+gem 'sinatra-authentication'
+
 
 group :development, :test do
     gem 'debugger'

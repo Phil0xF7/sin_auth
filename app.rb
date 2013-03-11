@@ -5,6 +5,7 @@ require 'dm-core'
 require 'dm-validations'
 require 'dm-timestamps'
 require 'dm-migrations'
+require 'sinatra-authentication'
 
 if development? # This is set by default, override with `RACK_ENV=production rackup`
   require 'sinatra/reloader'
@@ -14,12 +15,7 @@ if development? # This is set by default, override with `RACK_ENV=production rac
   Debugger.settings[:reload_source_on_change] = true
 end
 
-# TODO:
-# . logging
-# . media types testing
-# . put the database somewhere else
-# . GET a range
-# . multi-user with authentication
+use Rack::Session::Cookie, :secret => 'A1 sauce 1s so good you should use 1t on a11 yr st34ksssss'
 
 configure :development, :production do
   set :datamapper_url, "sqlite3://#{File.dirname(__FILE__)}/corkboard.sqlite3"
