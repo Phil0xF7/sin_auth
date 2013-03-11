@@ -15,8 +15,6 @@ if development? # This is set by default, override with `RACK_ENV=production rac
   Debugger.settings[:reload_source_on_change] = true
 end
 
-use Rack::Session::Cookie, :secret => 'A1 sauce 1s so good you should use 1t on a11 yr st34ksssss'
-
 configure :development, :production do
   set :datamapper_url, "sqlite3://#{File.dirname(__FILE__)}/corkboard.sqlite3"
 end
@@ -25,6 +23,8 @@ configure :test do
 end
 
 DataMapper.setup(:default, settings.datamapper_url)
+
+use Rack::Session::Cookie, :secret => 'A1 sauce 1s so good you should use 1t on a11 yr st34ksssss'
 
 class Note
   include DataMapper::Resource
@@ -46,7 +46,7 @@ class Note
 end
 
 DataMapper.finalize
-Note.auto_upgrade!
+DataMapper.auto_upgrade!
 
 def jsonp?(json)
   if params[:callback]
