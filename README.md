@@ -1,1 +1,1 @@
-An application for viewing... cats.
+Sinatra Authentication Testing
