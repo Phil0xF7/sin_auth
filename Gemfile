@@ -10,7 +10,7 @@ gem 'dm-validations'
 gem 'dm-timestamps'
 gem 'dm-migrations'
 gem 'sinatra-authentication'
-
+gem 'haml'
 
 group :development, :test do
     gem 'debugger'

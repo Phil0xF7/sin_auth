@@ -6,6 +6,7 @@ require 'dm-validations'
 require 'dm-timestamps'
 require 'dm-migrations'
 require 'sinatra-authentication'
+require 'haml'
 
 if development? # This is set by default, override with `RACK_ENV=production rackup`
   require 'sinatra/reloader'
@@ -56,8 +57,13 @@ def jsonp?(json)
   end
 end
 
+
 get '/' do
+  if logged_in?
     redirect 'index.html'
+  else
+    login_required
+  end
 end
 
 get '/notes' do
