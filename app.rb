@@ -6,7 +6,11 @@ require 'dm-validations'
 require 'dm-timestamps'
 require 'dm-migrations'
 require 'sinatra-authentication'
+require 'sinatra/flash'
+# require 'rack-flash3'
+require 'digest/sha1'
 require 'haml'
+
 
 if development? # This is set by default, override with `RACK_ENV=production rackup`
   require 'sinatra/reloader'
@@ -57,13 +61,14 @@ def jsonp?(json)
   end
 end
 
+# require login before anything happens
+before '/note*' do
+  login_required
+end
 
 get '/' do
-  if logged_in?
-    redirect 'index.html'
-  else
-    login_required
-  end
+  login_required
+  # erb :index
 end
 
 get '/notes' do

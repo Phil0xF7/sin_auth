@@ -10,6 +10,8 @@ gem 'dm-validations'
 gem 'dm-timestamps'
 gem 'dm-migrations'
 gem 'sinatra-authentication'
+gem 'sinatra-flash'
+gem 'rack-flash3'
 gem 'haml'
 
 group :development, :test do
